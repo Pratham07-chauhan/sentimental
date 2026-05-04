@@ -1,0 +1,8 @@
+streamlit
+nltk
+pandas
+scikit-learn
+matplotlib
+numpy
+beautifulsoup4
+deep-translator
