@@ -1,5 +1,26 @@
 import streamlit as st
 import nltk
+import streamlit as st
+import nltk
+import os
+
+# NLTK data download karo — Cloud deploy ke liye zaroori!
+def download_nltk():
+    packages = [
+        'punkt', 'punkt_tab', 'stopwords',
+        'wordnet', 'vader_lexicon',
+        'averaged_perceptron_tagger',
+        'averaged_perceptron_tagger_eng'
+    ]
+    for p in packages:
+        nltk.download(p, quiet=True)
+
+download_nltk()
+
+import pandas as pd
+import re
+import string
+# ... baaki imports same rahenge
 import pandas as pd
 import re
 import string
