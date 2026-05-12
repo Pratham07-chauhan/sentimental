@@ -489,7 +489,7 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-with st.spinner("⚙️ Loading and training all models... Please wait (2-3 minutes)"):
+with st.spinner("⚙️ Loading and training all models.."):
     classifiers, accuracy, adjectives, word_features, metrics_data, Y_test = load_and_train()
 
 st.success("✅ All 6 classifiers + VADER loaded and ready!")
@@ -510,7 +510,7 @@ tab1, tab2, tab3 = st.tabs(["🔍  Sentiment Analysis", "📊  Model Performance
 # TAB 1
 with tab1:
     st.markdown("<div class='section-header'>Enter Text for Analysis</div>", unsafe_allow_html=True)
-    st.markdown("<div style='color:rgba(255,255,255,0.5);font-size:0.83rem;margin-bottom:0.5rem;'>💡 Tip: Single tweet ya multiple tweets likh sakte ho — <b style='color:#e94560'></b> likho!</div>", unsafe_allow_html=True)
+    st.markdown("<div style='color:rgba(255,255,255,0.5);font-size:0.83rem;margin-bottom:0.5rem;'> — <b style='color:#e94560'></b> likho!</div>", unsafe_allow_html=True)
     user_input = st.text_area("", placeholder="Single tweet:\nI am very happy today\n\nMultiple tweets:\nI am very happy\nlife is beautiful\nyaar ye bahut amazing hai", height=160, label_visibility="collapsed")
 
     col1, col2, _ = st.columns([1.3, 0.8, 4])
