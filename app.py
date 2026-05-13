@@ -511,7 +511,7 @@ tab1, tab2, tab3 = st.tabs(["🔍  Sentiment Analysis", "📊  Model Performance
 with tab1:
     st.markdown("<div class='section-header'>Enter Text for Analysis</div>", unsafe_allow_html=True)
     st.markdown("<div style='color:rgba(255,255,255,0.5);font-size:0.83rem;margin-bottom:0.5rem;'> — <b style='color:#e94560'></b> </div>", unsafe_allow_html=True)
-    user_input = st.text_area("" height=160, label_visibility="collapsed")
+    user_input = st.text_area( height=160, label_visibility="collapsed")
 
     col1, col2, _ = st.columns([1.3, 0.8, 4])
     with col1: analyze_btn = st.button("🔍 Analyze Sentiment", use_container_width=True)
