@@ -96,7 +96,7 @@ html, body, [class*="css"] { font-family: 'Inter', sans-serif; }
 </style>
 """, unsafe_allow_html=True)
 
-
+# Helper functions
 def deEmojify(inputString):
     return inputString.encode('ascii', 'ignore').decode('ascii')
 
@@ -246,9 +246,9 @@ def get_final_sentiment(hybrid_result, vader_result):
         return hybrid_result
 
 def analyze_clauses(text):
-   
+    # Sentence ko clauses mein todo
     import re
-    
+    # Conjunctions pe split karo
     conjunctions = [' but ', ' however ', ' although ', ' though ', 
                    ' yet ', ' while ', ' whereas ', ' and ', ' or ']
     
@@ -384,7 +384,7 @@ def load_and_train():
     correct = sum(1 for i in range(len(preds)) if preds[i] == Y_test[i])
     accuracy.append([100 * correct / len(preds), "Hybrid Model"])
 
-    # Precision, Recall, F1, Confusion Matrix calculate
+    # Precision, Recall, F1, Confusion Matrix calculate karo
     from sklearn.metrics import precision_score, recall_score, f1_score, confusion_matrix, classification_report
     
     metrics_data = []
@@ -468,7 +468,7 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-with st.spinner("⚙️ Loading and training all models... "):
+with st.spinner("⚙️ Loading and training all models... Please wait (2-3 minutes)"):
     classifiers, accuracy, adjectives, word_features, metrics_data, Y_test = load_and_train()
 
 st.success("✅ All 6 classifiers + VADER loaded and ready!")
@@ -489,13 +489,9 @@ tab1, tab2, tab3 = st.tabs(["🔍  Sentiment Analysis", "📊  Model Performance
 # TAB 1
 with tab1:
     st.markdown("<div class='section-header'>Enter Text for Analysis</div>", unsafe_allow_html=True)
-    st.markdown("<div style='color:rgba(255,255,255,0.5);font-size:0.83rem;margin-bottom:0.5rem;'> — <b style='color:#e94560'></b> </div>", unsafe_allow_html=True)
-    user_input = st.text_area(
-    "",
-    
-    height=160,
-    label_visibility="collapsed"
-)
+    st.markdown("<div style='color:rgba(255,255,255,0.5);font-size:0.83rem;margin-bottom:0.5rem;'>💡 Tip: Single tweet ya multiple tweets likh sakte ho — <b style='color:#e94560'>har tweet alag line mein</b> likho!</div>", unsafe_allow_html=True)
+    user_input = st.text_area("", placeholder="Single tweet:\nI am very happy today\n\nMultiple tweets (har line ek tweet):\nI am very happy\nlife is beautiful\nyaar ye bahut amazing hai", height=160, label_visibility="collapsed")
+
     col1, col2, _ = st.columns([1.3, 0.8, 4])
     with col1: analyze_btn = st.button("🔍 Analyze Sentiment", use_container_width=True)
     with col2: clear_btn = st.button("🗑️ Clear", use_container_width=True)
